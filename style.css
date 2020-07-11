@@ -189,9 +189,11 @@ img{
     visibility: visible;
 }
 .leaders-container{
+    height: 86vh;
     overflow-y: auto;
 }
 .shout-out-container{
+    height: 86vh;
     overflow-y: auto;
 }
 .top-asked-heading{
