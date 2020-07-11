@@ -170,8 +170,14 @@ img{
     margin: 1vh;
 }
 .post-btn{
+    cursor: pointer;
+    padding: 0.5vw;
     height: 5vh;
     width: 5vw;
+}
+.post-btn:hover{
+    transform: scale(1.01);
+    background-color: #e3e3e4;
 }
 .all-questions{
     margin: 2vh;
@@ -195,10 +201,25 @@ img{
 }
 .question{
     border-radius: 6px;
-    min-height: 6vh;
     height: fit-content;
+    margin: 0.5vh;
+    background-color: #f7f7f7;
+    font-size: medium;
+    text-align: left;
+    padding: 0.5vw;
+}
+.q{
+
+}
+span{
+    color: #7b7b7e;
+}
+.leader{
+    border-radius: 5px;
     margin: 1vh;
-    background-color: rgb(228, 231, 231);
+    padding-bottom: 1vh;
+    /* height: 10vh; */
+    background-color: #ebebeb;
 }
 button{
     height: 4vh;
@@ -208,4 +229,19 @@ button{
 }
 .shout-out-header a:hover{
 background-color: black;
+}
+.message{
+    background-color:#ebebeb ;
+    font-size: small;
+    text-align: left;
+    padding: 0.5vw;
+    border-radius: 5px;
+    margin: 0.5vh;
+}
+.mssg{
+    background-color: #f0f0f3;
+    font-size: medium;
+    margin: 0.5vh;
+    border-radius: 5px;
+    padding-left: 0.4vw;
 }

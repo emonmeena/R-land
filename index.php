@@ -68,7 +68,9 @@ $result_shoutout = mysqli_query($db, $query);
     </div>
     <div class="leaders-container">
     <?php while($leaders = mysqli_fetch_assoc($result_leaderboard)): ?>
-                <div class="question"><?php echo $leaders['username'] . " " . $leaders['points']?>  </div>
+                <div class="leader"> 
+                <img style="height: 4vh" src="default.png" alt="" srcset=""><br>
+                     <?php echo $leaders['username'] . ":  " . $leaders['points']?>  </div>
                 <?php endwhile ?>
     </div>
     </div>
@@ -89,30 +91,35 @@ $result_shoutout = mysqli_query($db, $query);
             </div>
         </div>
         </div>
-        <div class="top-asked-heading"><h2 style="color: white">Trending Posts</h2></div>
+        <div  class="top-asked-heading"><h2 style="color: white">Trending Posts</h2></div>
         <div class="all-questions" id="all-q">
             
             <?php while($allquestions = mysqli_fetch_assoc($result_allquestions)): ?>
-                <div class="question"> <?php echo $allquestions['askedby'] ?><?php echo $allquestions['date'] ?> <?php echo $allquestions['question'] ?> </div>
+                <div class="question"> <b><?php echo $allquestions['askedby'] ?></b> - <span><?php echo $allquestions['date'] ?></span> 
+                <p class="q">
+                <?php echo $allquestions['question'] ?>
+                </p>
+            </div>
                 <?php endwhile ?>
         </div>
     </div>
     <div class="c3">
         <div class="shout-out-header">
             <form action="index.php" method="post">
-            <input type="text" name="message" id="message" placeholder="Shout Out messages.." onfocus="this.placeholder=''" onblur="this.placeholder='Shout out 😁'">
+            <input type="text" name="message" id="message" placeholder="Shout out messages.." onfocus="this.placeholder=''" onblur="this.placeholder='Shout out 😁'">
                 
         </form>
-            <!-- <a  style="color: white" href="index.php?logout='1'"> <button>LOGOUT</button> </a> -->
+            <a style="color: white" href="index.php?logout='1'"> <button>LOGOUT</button> </a>
 
         </div>
         <div class="shout-out-container">
         <?php while($allmessages = mysqli_fetch_assoc($result_shoutout)): ?>
-                <div class="question"> <?php echo $allmessages['username'] ?> <?php echo $allmessages['date'] ?> <?php echo $allmessages['message'] ?> </div>
+                <div class="message"> <b><?php echo $allmessages['username'] ?></b> - <?php echo $allmessages['date'] ?>
+                <p class="mssg"> <?php echo $allmessages['message'] ?> </p>
+            </div>
                 <?php endwhile ?>
         </div>
     </div>
-    <!-- <button onclick="myf()">btnn</button> -->
 <script src="./script.js"></script>  
 </body>
 </html>
