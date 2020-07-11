@@ -53,7 +53,10 @@ if(isset($_POST['login_user'])){
         $password = md5($password);
         $query = "SELECT * FROM users WHERE email ='$email' AND password='$password'";
         $result = mysqli_query($db, $query);
+        
         if(mysqli_num_rows($result) ==1){
+            $user = mysqli_fetch_assoc($result);
+            $username = $user['username'];
             $_SESSION['username'] = $username;
             header('location: index.php');
         }else{

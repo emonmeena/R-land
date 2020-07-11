@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="inner">
-        <div ><h1 class="appname">Welcome to the R-land</h1></div>
+        <div ><h1 class="appname">Welcome to the virtual R-land</h1></div>
         <form class="login" action="login.php" method="post">
             <?php include('errors.php') ?>
     
