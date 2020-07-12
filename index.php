@@ -7,7 +7,12 @@ $points = "";
 $message = "";
 $date = "".date("d/m/Y");
 
-$db = mysqli_connect('localhost', 'root', '', 'r-land');
+$servername = "localhost";
+$name = "root";
+$pass = "";
+$dbname = "r-land";
+
+$db = mysqli_connect($servername, $name, $pass, $dbname);
 
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
@@ -48,7 +53,7 @@ $result = mysqli_query($db, $query);
 $user = mysqli_fetch_assoc($result);
 $points = $user['points'];
 
-$query = "SELECT * FROM questions ORDER BY id DESC";
+$query = "SELECT * FROM questions ORDER BY rating DESC";
 $result_allquestions = mysqli_query($db, $query);
 
 $query = "SELECT username, points FROM users ORDER BY points DESC";
@@ -106,18 +111,33 @@ $result_shoutout = mysqli_query($db, $query);
                 <p class="q">
                 <?php echo $allquestions['question'] ?>
                 </p>
+                <br>
+                <div class="respond">
+                   <button onclick="rate('<?php echo $allquestions['question'] ?>', true)">👍</button>
+                    <div class="rating" id="<?php echo $allquestions['question'] ?>">
+                    <?php echo $allquestions['rating'] ?>
+                    </div>
+                    <button onclick="rate('<?php echo $allquestions['question'] ?>', false)">👎</button>
+                    <br>
+                    <input id="comment" type="text" name="answer" class="answer" placeholder="Comment.." onfocus="this.placeholder=''" onblur="this.placeholder='Comment..'">
+                    <button onclick="comment('<?php echo $username ?>','<?php echo $allquestions['question'] ?>')">POST</button>
+                    <button onclick="viewall()" style="">View all</button>
+                </div>
             </div>
+            <div class="comment" id="comment<?php echo$allquestions['question'];?>">
+                        <b> <?php echo $username ?> - </b> Just now
+                        <p id="place">answer</p> 
+                    </div>
                 <?php endwhile ?>
         </div>
     </div>
     <div class="c3">
         <div class="shout-out-header">
             <form action="index.php" method="post">
-            <input type="text" name="message" id="message" placeholder="Shout out messages.." onfocus="this.placeholder=''" onblur="this.placeholder='Shout out 😁'">
+            <input type="text" name="message" id="message" placeholder="Shout out messages.." onfocus="this.placeholder='Press Enter to POST'" onblur="this.placeholder='Shout out 😁'">
                 
         </form>
             <a style="color: white" href="index.php?logout='1'"> <button>LOGOUT</button> </a>
-
         </div>
         <div class="shout-out-container">
         <?php while($allmessages = mysqli_fetch_assoc($result_shoutout)): ?>

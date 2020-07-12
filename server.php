@@ -7,6 +7,10 @@ $errors = array();
 
 $db = mysqli_connect('localhost', 'root', '', 'r-land');
 
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
 if(isset($_POST['reg_user'])){
 
     $username = mysqli_real_escape_string($db, $_POST['username']);
