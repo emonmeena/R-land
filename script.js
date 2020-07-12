@@ -40,4 +40,9 @@ function comment(username, question){
 function viewall(){
     
    var ele =   document.getElementById('view-all-btn');
+   document.getElementById("all-comments").style.display = "block";
+
+   if(ele.innerHTML === "View all"){
+        ele.innerHTML = "Hide all"
+   }else ele.innerHTML = "View all";
 }

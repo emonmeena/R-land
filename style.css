@@ -274,3 +274,15 @@ button{
     border-radius: 3px;
     border:solid 1px;
 }
+.comment2{
+    background-color: #fafafa;
+    font-size: small;
+    padding: 0.7vh;
+    border-radius: 8px;
+    margin-left: 9vw;
+    width: 46.5vw;
+    text-align: left;
+}
+.allcomments{
+    display: none;
+}

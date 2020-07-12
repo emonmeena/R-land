@@ -59,8 +59,11 @@ $result_allquestions = mysqli_query($db, $query);
 $query = "SELECT username, points FROM users ORDER BY points DESC";
 $result_leaderboard = mysqli_query($db, $query);
 
-$query = "SELECT * FROM shoutout ORDER BY id DESC";
+$query = "SELECT username, message FROM shoutout ORDER BY id DESC";
 $result_shoutout = mysqli_query($db, $query);
+
+$query = "SELECT answer, givenby FROM answers";
+$result_allcomments = mysqli_query($db, $query);
 
 ?>
 
@@ -127,8 +130,16 @@ $result_shoutout = mysqli_query($db, $query);
             <div class="comment" id="comment<?php echo$allquestions['question'];?>">
                         <b> <?php echo $username ?> - </b> Just now
                         <p id="place">answer</p> 
+            </div>
+            <div class="allcomments" id="all-comments">
+                <?php while($allcomments = mysqli_fetch_assoc($result_allcomments)): ?>
+                    <div class="comment2">
+                        <b> <?php echo $allcomments["givenby"] ?> - </b> <?php echo date("d/m/y") ?>
+                        <p id="place"> <?php echo $allcomments['answer'] ?> </p> 
                     </div>
-                <?php endwhile ?>
+                    <?php endwhile ?>
+            </div>
+            <?php endwhile ?>
         </div>
     </div>
     <div class="c3">
