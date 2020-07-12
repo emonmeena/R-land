@@ -121,7 +121,7 @@ $result_shoutout = mysqli_query($db, $query);
                     <br>
                     <input id="comment" type="text" name="answer" class="answer" placeholder="Comment.." onfocus="this.placeholder=''" onblur="this.placeholder='Comment..'">
                     <button onclick="comment('<?php echo $username ?>','<?php echo $allquestions['question'] ?>')">POST</button>
-                    <button onclick="viewall()" style="">View all</button>
+                    <button id="view-all-btn" onclick="viewall()" style="">View all</button>
                 </div>
             </div>
             <div class="comment" id="comment<?php echo$allquestions['question'];?>">

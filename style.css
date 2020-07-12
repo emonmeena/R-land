@@ -270,3 +270,7 @@ background-color: black;
 #comment{
     font-size: medium;
 }
+button{
+    border-radius: 3px;
+    border:solid 1px;
+}

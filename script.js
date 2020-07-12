@@ -33,9 +33,11 @@ function comment(username, question){
             place.innerHTML = comment;
         }
     };
-    xmlhttp.open("GET","comment.php?question="+question+"&comment="+comment+"&name="+username,true);
+    xmlhttp.open("GET","comment.php?question="+question+"&comment="+comment+"&username="+username,true);
     xmlhttp.send();
 }
 
 function viewall(){
+    
+   var ele =   document.getElementById('view-all-btn');
 }
