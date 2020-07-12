@@ -14,14 +14,11 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
       border-radius: 5px;
-    background: rgb(186, 186, 187);
+
     visibility: hidden;
   }
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(155, 155, 155);
-}
+
 body{
     background-color: dodgerblue;
     font-size: large;
@@ -185,9 +182,7 @@ img{
     overflow-y: auto;
     border-bottom: solid black 1px;
 }
-.all-questions:hover::-webkit-scrollbar-thumb{
-    visibility: visible;
-}
+
 .leaders-container{
     height: 86vh;
     overflow-y: auto;

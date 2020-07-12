@@ -9,11 +9,17 @@ $date = "".date("d/m/Y");
 
 $db = mysqli_connect('localhost', 'root', '', 'r-land');
 
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
 if(!isset($_SESSION['username'])){
     header("location: login.php");
 }
 if(isset($_GET['logout'])){
     session_destroy();
+    unset($_SESSION['message']);
+    unset($_SESSION['question']);
     unset($_SESSION['username']);
     header("location: login.php");
 }
@@ -23,6 +29,7 @@ if(isset($_POST['post_question'])){
         $query = "INSERT INTO questions (question, askedby, date)
         VALUES('$question', '$username', '$date')";
         mysqli_query($db, $query);
+        $_SESSION['question'] = $question;
     }
 }
 
@@ -32,6 +39,7 @@ if(isset($_POST['message'])){
         $query = "INSERT INTO shoutout (message, username, date)
         VALUES ('$message', '$username', '$date')";
         mysqli_query($db, $query);
+        $_SESSION['message'] = $message;
     }
 }
 
@@ -76,7 +84,6 @@ $result_shoutout = mysqli_query($db, $query);
     </div>
     <div class="c2" id="c2">
         <div class="top" id="top">
-        <!-- <div class="main-heading" id="main-w">R-land Quest</div> -->
         <div class="personal" id="personal">
             <div class="text-field">
                 <form action="index.php" method="post">
@@ -120,6 +127,6 @@ $result_shoutout = mysqli_query($db, $query);
                 <?php endwhile ?>
         </div>
     </div>
-<script src="./script.js"></script>  
+<script src="script.js"></script>  
 </body>
 </html>
